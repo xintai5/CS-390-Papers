@@ -1,0 +1,98 @@
+\documentclass[10pt,twocolumn]{article} 
+
+% use the oxycomps style file
+\usepackage{oxycomps}
+
+% read references.bib for the bibtex data
+\bibliography{references}
+
+% include metadata in the generated pdf file
+\pdfinfo{
+    /Title (Ethics Paper)
+    /Author (Xintai Ao)
+}
+
+% set the title and author information
+\title{Ethics Paper: Using Machine Learning to Reverse-Engineer the Uber Eats Algorithm}
+\author{Xintai Ao}
+\affiliation{Occidental College}
+\email{xao@oxy.edu}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+ This paper is an ethical assessment of the related Occidental Computer Science Comprehensive Project: \textit{Using Machine Learning to Reverse-Engineer the Uber Eats Algorithm}. The purpose of this paper is to argue against the possibility of addressing all ethical concerns when using machine learning to reverse engineer mainstream app algorithms. Ethical awareness is extremely important especially in the computer science field as it can have adverse economics and societal effects. The main goal of ethical awareness is to identify potential harms to underrepresented demographics. The likelihood of addressing all the ethical concerns in my comprehensive project are minimal. Ethical concerns concerning the related project include data bias,  transparency and explainability, and technological solutionism. 
+    
+\end{abstract}
+
+\section{Introduction}
+
+For my senior-year Occidental College Computer Science Comprehensive Project, I have chosen to use machine learning to reverse engineer the Uber Eats delivery algorithm. The purpose of which is to better understand how Uber Eats derived their pricing algorithm in regards to distance, traffic density, location, and driver availability. Through reverse-engineering, better understanding of the Uber Eats delivery algorithm can be utilized towards improving the current algorithm or towards creating a better one. The ethical implications of this project are addressed in the below sections.
+
+\section{Ethical Considerations}
+
+When questioning the ethical considerations of reverse engineering, the purpose of which is to better understand the Uber Eats pricing algorithm, the ethics of doing so must be considered. Since the related project advocates for the use of machine learning, we must consider the ethics of pricing algorithms themselves. Furthermore, we must look into the ethics of how these pricing algorithms across a multitude of delivery apps are coded and how they can affect the people who use this app commercially and for work. 
+
+\subsection{Data Bias}
+
+When analyzing the results of machine learning projects, especially those with the purpose of reverse engineering delivery algorithms, data bias has to be taken into consideration. Utilizing machine learning to reverse engineer well known APIs is no exception. All machine learning, regardless of the task, shares a reliance on input data for learning and training. According to \citetitle{BiasInMachineLearningAlgorithms}, ``Naturally, by learning through data observation rather than being explicitly programmed to perform a certain way, MLAGs will develop biases towards certain types of input". Input data will drastically effect a model's outcome, wherein the concept "garbage in, garbage out" comes into play. For this comps project, the data must not be biased if we want to be able to reliably reverse engineer a specific algorithm. However, in the case of this project, that will be difficult since the data from Uber Eats that will be used is intrinsically biased. With the main purpose of food delivery and time efficiency, the delivery algorithm has to estimate and manage the time taken for the restaurant to prepare the food, the time the deliverer will travel, and the willingness of the customer to wait. Biases could result from obtaining delivery data from cities with varying population and amount of deliverers if not properly analyzed.
+
+To avoid wrongly predicting delivery prices and times, we must ensure the algorithm we reverse engineer is as precise or better than the one Uber Eats utilizes. But data bias is almost impossible to completely avoid, meaning we will most likely fall short of this goal, failing in our ethical obligation to consumers and deliverers.
+
+\subsection{Transparency and Explainability}
+
+To create an ethical project, there must be a high level of transparency around the Uber Eats delivery algorithm and its inputs. In order for this to happen, we must aim to secure historical data surrounding delivery times, pricing, and other fluctuations from the company itself.
+
+\subsubsection{Food Delivery}
+
+This comps project involves food delivery algorithms, where recent advancements in machine learning have led to improvements in food delivery making many food delivery apps such as Uber Eats, a popular choice nationwide. To understand the ethical implications of reverse engineering such algorithms, we must evaluate the transparency and explainability of their nature. To do so, we need to dissect the technological mechanisms behind food delivery algorithms.
+
+Food delivery apps and their algorithms were first created in the mid 1990s but were largely popularized with the introduction of major food companies GrubHub (2001), Postmates (2011), DoorDash (2013), and Uber Eats (2014), all of which account for around 96\% of today's online food delivery market in the United States. Prior to utilizing machine learning, Uber Eats used a Greedy algorithm for determining when to dispatch a delivery person, which solved the problem of food delivery efficiency by estimating the best local answer for each delivery, without optimizing the problem space for all the drivers in that area. This did not work well for the service as a whole, as it led to late deliveries and delivery people waiting in the restaurant parking lot for orders to be finished. A Greedy algorithm will simply find the closest driver for a particular order. According to \citetitle{UberEatsMachineLearning}, ``For each order, the system must make three predictions: the time of delivery, the time it takes to deliver the food, and the time it takes for the restaurant to prepare the order. Predictions are made more difficult, given that Uber doesn’t have any insight into how long it takes for a restaurateur to prepare any given meal". Timing is the key. Uber Eats wants to dispatch the delivery person to arrive just when the order is ready. If it is too early then the delivery person will wait around unnecessarily, losing money from other possible orders. But wait too long and the food may arrive late, or cold, to the hungry customers. In contrast, a global optimization through machine learning would resolve the best times for all the drivers and all the pickups. With ML in place, a travel time estimate can be taken from the history of all travel times, and for all restaurants in the area, given all the jobs and all the available drivers. 
+
+Another consideration is the variability of incentives and constraints on platform firms. According to \citetitle{AlgorithmicHarmToWorkers}, "The more transactions occur, the more customers’ needs are met, the more workers earn, and the more the platform operators collect". This illuminates a set of situations where the platform firms' interests can diverge from, and may directly oppose, those of their users. The vast asymmetries of information and market power that firms enjoy over their users invite closer scrutiny of the power dynamics at play and the behavior of platform firms compared with how they represent themselves to users.
+
+Despite the fact that machine learning algorithms have theoretically perfect information on the market, there is still room for improvement. Workers for major food delivery apps have been constantly faced with inadequacies that have directly affected their worked negatively, the remedies to which are still yet to be developed.  
+
+\subsubsection{Model}
+
+Reverse engineering a major app like Uber Eats is quite an undertaking. The amount of historical and real-time data needed to emulate a similar algorithm to that of Uber Eats' machine learning based delivery algorithm is immense. The likelihood that this comps project were to succeed in accurately reverse engineering Uber Eats' delivery algorithm is low, but not impossible. This may result in inaccurate predictions of delivery prices and times, which has greater implications on the ethical consideration of investor obligations, model transparency, and security. Reverse engineering major food delivery apps for purpose of saving money is ethically fine, though legally may not be as sound.
+
+To make this project more ethical, there would need to be a lot of transparency on the risks involved in utilizing in this comps project towards saving money on food delivery or even creating a separate food delivery app for the purpose of a project or profit.
+
+\subsection{Technological Solutionism}
+
+Though the main purpose of this comps project is find a better understanding how machine learning can be utilized towards enhancing food delivery algorithm, this project also aims to find success in understanding how a food delivery algorithm can be almost a perfect example on how to manage a wildly unpredictable variable, people. The Uber Eat's algorithm is able to predict seemly random factors such as traffic, food preparation time, and deliverer proximity to the restaurant and the customer. If this project is successful, the predictions that can be founded through a reverse-engineering this algorithm can stand to be profitable, financially and knowledge-wise. Though it may seem complicated to most, this reverse-engineered algorithm can hold the key towards understanding not only how Uber Eats utilizes machine learning but other companies as well. Anyone who can understand these algorithm can then go on to theoretically make their own app, but legally, on a much smaller scale. For example, a food delivery service on a college campus or a food delivery price comparison app.
+
+\subsection{Self-Fulfillment}
+
+If the Uber Eats algorithm were to become available to the public, there could be a multitude of uses for it, however morally or ethically ambiguous. If these predictions were so easily accessed, it is entirely possible that the predictions would become self-fulfilling cycle where:
+
+\begin{enumerate}
+    \item The Uber Eats algorithm is publicized;
+    \item People use the code to create their own projects or apps;
+    \item Competitors could arise to create less of an oligopoly in the food delivery market.
+\end{enumerate}
+
+If this were to happen, then I could found personally liable and morally corrupt. Thus, it is important that the delivery algorithm found in this comps project be kept private, with only the results and testing capabilities available to the public.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\linewidth]{algorithm.png}
+    \caption{
+       Uber Eats Algorithmic Model
+    }
+    \label{fig:second-page}
+\end{figure}
+
+\section{Personal Bias}
+
+Personal bias is an important factor to consider when creating this project. Originally, for this comps project, I wanted to build an app that would be able to help consumers compare the prices of different food delivery apps such as Uber Eats, Postmates, Grubhub, and DoorDash. The goal of which was was to build an app that would eliminate the need to check multiple delivery apps just to compare the food and delivery prices to find the cheapest option. I find that if this project is successful, the possibility of creating such an app would become seemingly in reach. The ethical ambiguity of such ambitions is questionable to say the least, in that trying to reverse-engineer a popular app's algorithm for my own personal gain is morally questionable as well. However, This app would not be used for economic gain, rather to find a better understanding of how such apps operate and become so successful in the first place.
+
+According to \citetitle{EthicsInComputing}, the main purpose of reverse engineering is to engage "individuals in a constructive learning process about the operation of systems and products. The process of taking something apart and revealing the way in which it works is an effective way to learn how to build a technology or make improvements to it." This hold true for this comps project. In the future, when this project could be potentially utilized, I will see to that the ethical obligations of maintaining the potential abuse of this private algorithm will be ensured.
+
+\printbibliography 
+
+\end{document}
