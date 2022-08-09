@@ -1,4 +1,3 @@
-```json
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
 import json
@@ -34,5 +33,4 @@ for x in soup.findAll('h3'): # find the name of the restaurant
 
 with open('final_result.json', 'w+', encoding='utf-8') as out: # writing the ginal file
     json.dump(data, out, indent=4, ensure_ascii=False)
-```
     
