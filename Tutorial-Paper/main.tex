@@ -1,1 +1,119 @@
+\documentclass[10pt,twocolumn]{article} 
 
+% use the oxycomps style file
+\usepackage{oxycomps}
+
+% read references.bib for the bibtex data
+\bibliography{references}
+
+% include metadata in the generated pdf file
+\pdfinfo{
+    /Title (Tutorial Report)
+    /Author (Xintai Aaron Ao)
+}
+
+% set the title and author information
+\title{Tutorial Report}
+\author{Xintai Aaron Ao}
+\affiliation{Occidental College}
+\email{xao@oxy.edu}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+This report documents the tutorial completed as part of my \textit{Occidental College Computer Science Comprehensive Project}. This report has four components: methods, evaluation, discussion, and software documentation. This report details the tutorial: \href{https://benminor.medium.com/beginners-guide-to-scraping-data-uber-eats-example-dca0b872be4e}{Beginner’s Guide to Scraping Data (Uber Eats Example)}, which reviews the key concepts and learned information relevant to this comprehensive project.
+
+\end{abstract}
+
+\section{Methods}
+This tutorial utilizes Python to web scrape the Uber Eats in order to pull data regarding restaurants and their respective ratings, estimated delivery time and fees. This is because Python has been the leading web scraping language for the better part of a decade, according to this tutorial. The steps for this tutorial are as follows:
+
+\begin{enumerate}
+    \item The Python \textit{BeautifulSoup4} library will be an important tool for this project in order to web scrape the Uber Eats website. To install it, assuming the user has pip installed on their machine, run:
+    
+\begin{lstlisting}
+pip install beautifulsoup4
+\end{lstlisting}
+
+    \item The next step will be to import the library into your program:
+
+\begin{lstlisting}
+from bs4 import BeautifulSoup
+\end{lstlisting}
+
+    \item Next, import the following at the top of your program:
+
+\begin{lstlisting}    
+from urllib.request import Request, urlopen
+import json
+import ssl
+\end{lstlisting}
+
+    \item In doing this, our downloaded libraries are now sorted. In this tutorial, the author uses the Burlington, Ontario Canadian Uber Eats website to reference from. Since my project revolves around Eagle Rock, Los Angeles, the area surrounding Occidental College, I used this link:
+    
+    \url{https://www.Uber Eats.com/neighborhood/eagle-rock-los-angeles-ca}
+
+    \item Now, we will retrieve the webpage contents; the following lines of code allow us to do so:
+
+\begin{lstlisting}    
+url = "https://www.Uber Eats.com/neighborhood/eagle-rock-los-angeles-ca" # url for Los Angeles area
+
+# send a request to the page, using the Mozilla 5.0 browser header
+req = Request(url, headers={'User-Agent' : 'Mozilla/5.0'})
+
+# open the page using our urlopen library
+page = urlopen(req).read() 
+
+# use BeautifulSoup to parse the webpage
+soup = BeautifulSoup(page, 'html.parser')
+\end{lstlisting}  
+
+The lines above basically tells the program where to find and request a specific web page whilst mimicking the actions of a user using Mozilla 5.0. After the page is opened, it is finally parsed through by using BeautifulSoup, which does most of the difficult work for us. The next step is to grab the data we want to use for the project. Just like with solving a puzzle, in web scraping you start with your end piece of data that you want to extract from a website. In the case of my web application project, I want to find all the restaurants in Eagle Rock, Los Angeles that are on Uber Eats. Thus the next steps are:
+
+    \item Assuming that you are working on an intuitive browser, right click on the name of any restaurant and hit \textit{"Inspect"}; the front-end code should pop up allowing you to see the tags of each element. During my run through of this tutorial, I right clicked on "McDonald's (Highland Pk-York)" and clicked \textit{"Inspect"}, which then took me to this line:
+
+\begin{lstlisting}    
+<h3 class="h3 c4 c5 ai">McDonald's (Highland Pk-York)</h3>
+\end{lstlisting}  
+
+What this line of code means: "$<$h3$>$" is the tag used by Uber Eats to identify the specific names of the restaurant on the page. 
+
+    \item Knowing this, we need to find every "$<$h3$>$" tag on our page in order to collect all of the restaurant names. This can be done with the following line of code:
+
+\begin{lstlisting}    
+# loop through all of the restaurants on this page
+for x in soup.findAll(‘h3’): 
+     print(x.text)
+\end{lstlisting}  
+
+    \item This simple Python loop just iterates through the webpage content that the BeautifulSoup library already parsed for us. The "findAll" method creates a Python list of each element in our object "soup" which contains the "$<$h3$>$" tag. Inside the loop, we're just printing the object x's text field. The following output should result in:
+
+\begin{lstlisting}    
+Charlie's Tacos (Highland Park)
+Brick & Flour (Glendale)
+Dave's Hot Chicken (Glendale)
+Lil Mañana
+Tacos on The Fly (4944 York Boulevard)
+The Burrito Snob (4944 York Boulevard)
+Bruno's Birria Bar (4944 York Boulevard)
+\end{lstlisting} 
+
+\end{enumerate}
+
+This tutorial works not just for Uber Eats but all other major food delivery websites including Postmates, GrubHub, and DoorDash. The only difference is in typing the respective urls for each delivery app's website during step 5 and the identifying tags used in each website's front-end code in steps 6-8 (i.e. Uber Eats: $<$h3$>$).
+
+\section{Evaluation}
+
+
+\section{Discussion}
+
+\section{Software Documentation}
+
+See attached \textbf{uber$-$eats$-$scraper.py} file for the more in-depth example of this tutorial where I gather more specified restaurant data.
+
+\printbibliography 
+
+\end{document}
